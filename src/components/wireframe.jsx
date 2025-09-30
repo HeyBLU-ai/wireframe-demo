@@ -452,5 +452,3 @@ const HeyBluWireframe = () => {
 };
 
 export default HeyBluWireframe;
-export default HeyBluWireframe;
-export default HeyBluWireframe;
