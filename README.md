@@ -31,9 +31,9 @@ Hey Blu is a digital umpire assistant that uses AR technology to help umpires ma
 3. **Strike Zone** - Choose Rookie, Minors, or Pro strike zone
 4. **Connect Audio** - Audio output configuration
 5. **Setup Instructions** - Pre-scanning preparation steps
-6. **Scan Field** - AR field scanning simulation
-7. **Ready to Play** - Setup confirmation and play button
-8. **Game Active** - Live game tracking interface
+6. **Scan Field** - AR field scanning simulation (landscape mode required)
+7. **Ready to Play** - Setup confirmation and play button (landscape mode required)
+8. **Game Active** - Live game tracking interface (landscape mode required)
 9. **Save Session** - Session summary and save options
 
 ## 🚀 Quick Start
@@ -90,7 +90,8 @@ hey-blu-wireframe/
 ## 🎨 Design Notes
 
 - **Mobile-First**: Designed for iPhone with 9:19.5 aspect ratio
-- **Color Scheme**: Red and blue gradient (baseball theme)
+- **Color Scheme**: Blue-dominant theme (matching "BLU" brand)
+- **Orientation**: Portrait for setup UI, landscape required for AR scanning and gameplay
 - **Typography**: Clean, readable fonts with proper hierarchy
 - **Interactions**: Smooth transitions and hover effects
 - **Accessibility**: High contrast and clear button states

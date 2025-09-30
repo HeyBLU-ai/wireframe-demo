@@ -265,6 +265,10 @@ const HeyBluWireframe = () => {
             <div className="text-5xl mb-4">✅</div>
             <h2 className="text-xl font-bold text-gray-800 mb-2">Setup Complete!</h2>
             <p className="text-gray-600 text-sm">Place phone in tripod and press Play</p>
+            <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-3 mt-3">
+              <p className="text-blue-800 font-semibold text-sm">📱 Keep in Landscape Mode</p>
+              <p className="text-blue-700 text-xs mt-1">Phone must stay sideways during gameplay for AR tracking</p>
+            </div>
           </div>
           <div className="flex-grow bg-green-50 rounded-lg p-6 border-2 border-green-200 mb-6">
             <div className="space-y-4">
@@ -305,8 +309,11 @@ const HeyBluWireframe = () => {
         <div className="flex flex-col h-full px-8">
           <div className="text-center mb-6">
             <div className="text-5xl mb-4 animate-pulse">⚾</div>
-            <h2 className="text-2xl font-bold text-green-600 mb-2">GAME ACTIVE</h2>
+            <h2 className="text-2xl font-bold text-blue-600 mb-2">GAME ACTIVE</h2>
             <p className="text-gray-600 text-sm">Tracking pitches in real-time</p>
+            <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-2 mt-3">
+              <p className="text-blue-800 font-semibold text-xs">📱 Landscape Mode Required</p>
+            </div>
           </div>
           <div className="flex-grow bg-gray-100 rounded-lg p-6 mb-6">
             <div className="bg-white rounded-lg p-4 mb-4 shadow">
