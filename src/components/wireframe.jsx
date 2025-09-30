@@ -22,7 +22,7 @@ const HeyBluWireframe = () => {
           </p>
           <button 
             onClick={() => setCurrentScreen(1)}
-            className="w-full bg-red-600 text-white py-4 rounded-lg font-semibold mb-3 hover:bg-red-700 transition"
+            className="w-full bg-blue-600 text-white py-4 rounded-lg font-semibold mb-3 hover:bg-blue-700 transition"
           >
             Setup BLU
           </button>
@@ -198,7 +198,7 @@ const HeyBluWireframe = () => {
           </div>
           <button 
             onClick={() => setCurrentScreen(5)}
-            className="w-full bg-red-600 text-white py-4 rounded-lg font-semibold mt-6 hover:bg-red-700 transition"
+            className="w-full bg-blue-600 text-white py-4 rounded-lg font-semibold mt-6 hover:bg-blue-700 transition"
           >
             Next
           </button>
@@ -217,9 +217,13 @@ const HeyBluWireframe = () => {
       content: (
         <div className="flex flex-col h-full px-8">
           <div className="text-center mb-6">
-            <Eye className="mx-auto mb-4 text-red-600" size={48} />
+            <Eye className="mx-auto mb-4 text-blue-600" size={48} />
             <h2 className="text-xl font-bold text-gray-800 mb-2">Scan Field</h2>
             <p className="text-gray-600 text-sm">ARKit Scanning Active</p>
+            <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-3 mt-3">
+              <p className="text-blue-800 font-semibold text-sm">📱 Rotate to Landscape</p>
+              <p className="text-blue-700 text-xs mt-1">Hold your phone sideways for better scanning</p>
+            </div>
           </div>
           <div className="flex-grow bg-gray-900 rounded-lg relative overflow-hidden border-4 border-gray-700">
             {/* Simulated AR View */}
@@ -232,14 +236,14 @@ const HeyBluWireframe = () => {
                   <p className="text-sm mt-2 text-yellow-300">Tap to place the mound</p>
                 </div>
                 <div className="w-full bg-gray-700 rounded-full h-2">
-                  <div className="bg-red-600 h-2 rounded-full" style={{width: '45%'}}></div>
+                  <div className="bg-blue-600 h-2 rounded-full" style={{width: '45%'}}></div>
                 </div>
               </div>
             </div>
           </div>
           <button 
             onClick={() => setCurrentScreen(6)}
-            className="w-full bg-red-600 text-white py-4 rounded-lg font-semibold mt-6 hover:bg-red-700 transition"
+            className="w-full bg-blue-600 text-white py-4 rounded-lg font-semibold mt-6 hover:bg-blue-700 transition"
           >
             Continue to Strike Zone Placement
           </button>
@@ -280,7 +284,7 @@ const HeyBluWireframe = () => {
           </div>
           <button 
             onClick={() => {setIsPlaying(true); setCurrentScreen(7);}}
-            className="w-full bg-green-600 text-white py-5 rounded-lg font-bold text-lg hover:bg-green-700 transition flex items-center justify-center"
+            className="w-full bg-blue-600 text-white py-5 rounded-lg font-bold text-lg hover:bg-blue-700 transition flex items-center justify-center"
           >
             <Play className="mr-2" size={24} fill="white" />
             Play Ball!
@@ -378,7 +382,7 @@ const HeyBluWireframe = () => {
         <div className="bg-black rounded-[3rem] p-3 shadow-2xl">
           <div className="bg-white rounded-[2.5rem] overflow-hidden" style={{aspectRatio: '9/19.5'}}>
             {/* Status Bar */}
-            <div className="bg-gradient-to-r from-red-600 to-blue-600 px-6 py-3 flex justify-between items-center text-white text-xs">
+            <div className="bg-gradient-to-r from-blue-700 to-blue-500 px-6 py-3 flex justify-between items-center text-white text-xs">
               <span>9:41</span>
               <div className="flex items-center gap-1">
                 <div className="w-4 h-3 border border-white rounded-sm"></div>
@@ -388,7 +392,7 @@ const HeyBluWireframe = () => {
             </div>
             
             {/* App Header */}
-            <div className="bg-gradient-to-r from-red-600 to-blue-600 px-6 py-4 text-center">
+            <div className="bg-gradient-to-r from-blue-700 to-blue-500 px-6 py-4 text-center">
               <h1 className="text-3xl font-bold text-white" style={{fontFamily: 'cursive'}}>
                 Hey Blu
               </h1>
