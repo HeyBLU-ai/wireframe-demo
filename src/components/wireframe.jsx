@@ -392,12 +392,12 @@ const HeyBluWireframe = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-200 p-8 flex items-center justify-center">
-      <div className={`w-full max-w-md transition-transform duration-500 ${isLandscapeMode ? 'rotate-90' : ''}`}>
+      <div className={`w-full transition-all duration-500 ${isLandscapeMode ? 'max-w-2xl' : 'max-w-md'}`}>
         {/* iPhone Frame */}
-        <div className="bg-black rounded-[3rem] p-3 shadow-2xl">
+        <div className={`bg-black rounded-[3rem] p-3 shadow-2xl transition-all duration-500 ${isLandscapeMode ? 'rotate-90' : ''}`}>
           <div className="bg-white rounded-[2.5rem] overflow-hidden" style={{aspectRatio: isLandscapeMode ? '19.5/9' : '9/19.5'}}>
             {/* Status Bar */}
-            <div className="bg-gradient-to-r from-blue-700 to-blue-500 px-6 py-3 flex justify-between items-center text-white text-xs">
+            <div className={`bg-gradient-to-r from-blue-700 to-blue-500 px-6 py-3 flex justify-between items-center text-white text-xs transition-transform duration-500 ${isLandscapeMode ? '-rotate-90' : ''}`}>
               <span>9:41</span>
               <div className="flex items-center gap-1">
                 <div className="w-4 h-3 border border-white rounded-sm"></div>
@@ -407,7 +407,7 @@ const HeyBluWireframe = () => {
             </div>
             
             {/* App Header */}
-            <div className="bg-gradient-to-r from-blue-700 to-blue-500 px-6 py-4 text-center">
+            <div className={`bg-gradient-to-r from-blue-700 to-blue-500 px-6 py-4 text-center transition-transform duration-500 ${isLandscapeMode ? '-rotate-90' : ''}`}>
               <h1 className="text-3xl font-bold text-white" style={{fontFamily: 'cursive'}}>
                 Hey Blu
               </h1>
@@ -415,7 +415,7 @@ const HeyBluWireframe = () => {
             </div>
 
             {/* Screen Content */}
-            <div className="bg-white" style={{height: 'calc(100% - 116px)'}}>
+            <div className={`bg-white transition-transform duration-500 ${isLandscapeMode ? '-rotate-90' : ''}`} style={{height: 'calc(100% - 116px)'}}>
               {screens[currentScreen].content}
             </div>
           </div>
