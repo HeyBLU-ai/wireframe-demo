@@ -225,9 +225,7 @@ const HeyBluWireframe = () => {
       content: (
         <div className="flex flex-col h-full px-8">
           <div className="text-center mb-6">
-            <Eye className="mx-auto mb-4 text-blue-600" size={48} />
             <h2 className="text-xl font-bold text-gray-800 mb-2">Scan Field</h2>
-            <p className="text-gray-600 text-sm">ARKit Scanning Active</p>
             <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-3 mt-3">
               <p className="text-blue-800 font-semibold text-sm">📱 Rotate to Landscape</p>
               <p className="text-blue-700 text-xs mt-1">Hold your phone sideways for better scanning</p>
@@ -272,36 +270,11 @@ const HeyBluWireframe = () => {
           <div className={`text-center ${isLandscapeMode ? 'flex-1 mr-4' : 'mb-8'}`}>
             <div className={`${isLandscapeMode ? 'text-2xl mb-1' : 'text-5xl mb-4'}`}>✅</div>
             <h2 className={`${isLandscapeMode ? 'text-sm' : 'text-xl'} font-bold text-gray-800 mb-1`}>Setup Complete!</h2>
-            <p className={`text-gray-600 ${isLandscapeMode ? 'text-xs' : 'text-sm'}`}>Place phone in tripod and press Play</p>
-            {!isLandscapeMode && (
-              <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-3 mt-3">
-                <p className="text-blue-800 font-semibold text-sm">📱 Keep in Landscape Mode</p>
-                <p className="text-blue-700 text-xs mt-1">Phone must stay sideways during gameplay for AR tracking</p>
-              </div>
-            )}
-          </div>
-          <div className={`${isLandscapeMode ? 'flex-1' : 'flex-grow'} bg-green-50 rounded-lg border-2 border-green-200 ${isLandscapeMode ? 'p-3 mb-0' : 'p-6 mb-6'}`}>
-            <div className={`${isLandscapeMode ? 'space-y-1' : 'space-y-4'}`}>
-              <div className={`flex items-center justify-between ${isLandscapeMode ? 'py-1' : 'py-3'} border-b border-green-200`}>
-                <span className={`text-gray-700 font-medium ${isLandscapeMode ? 'text-xs' : ''}`}>Field Size:</span>
-                <span className={`text-gray-900 font-semibold ${isLandscapeMode ? 'text-xs' : ''}`}>{fieldSize || '12U'}</span>
-              </div>
-              <div className={`flex items-center justify-between ${isLandscapeMode ? 'py-1' : 'py-3'} border-b border-green-200`}>
-                <span className={`text-gray-700 font-medium ${isLandscapeMode ? 'text-xs' : ''}`}>Strike Zone:</span>
-                <span className={`text-gray-900 font-semibold ${isLandscapeMode ? 'text-xs' : ''}`}>{strikeZone || 'Pro'}</span>
-              </div>
-              <div className={`flex items-center justify-between ${isLandscapeMode ? 'py-1' : 'py-3'}`}>
-                <span className={`text-gray-700 font-medium ${isLandscapeMode ? 'text-xs' : ''}`}>Audio Output:</span>
-                <span className={`text-gray-900 font-semibold ${isLandscapeMode ? 'text-xs' : ''}`}>{sound || 'Speaker'}</span>
-              </div>
+            <p className={`text-gray-600 ${isLandscapeMode ? 'text-xs' : 'text-sm'}`}>Place phone in tripod in landscape mode, and press Play</p>
+            <div className={`text-gray-500 ${isLandscapeMode ? 'text-xs mt-1' : 'text-sm mt-2'}`}>
+              Field: {fieldSize || '12U'} • Zone: {strikeZone || 'Pro'} • Audio: {sound || 'Speaker'}
             </div>
           </div>
-          {isLandscapeMode && (
-            <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-1 mb-2">
-              <p className="text-blue-800 font-semibold text-xs">📱 Keep in Landscape Mode</p>
-              <p className="text-blue-700 text-xs">Phone must stay sideways during gameplay for AR tracking</p>
-            </div>
-          )}
           <div className={`${isLandscapeMode ? 'flex flex-col space-y-1' : ''}`}>
             <button 
               onClick={() => {setIsPlaying(true); setCurrentScreen(7);}}
