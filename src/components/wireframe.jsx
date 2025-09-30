@@ -8,6 +8,7 @@ const HeyBluWireframe = () => {
   const [sound, setSound] = useState('');
   const [isPlaying, setIsPlaying] = useState(false);
   const [showSaveFields, setShowSaveFields] = useState(false);
+  const [isLandscapeMode, setIsLandscapeMode] = useState(false);
 
   const screens = [
     // Screen 0: Welcome
@@ -194,10 +195,17 @@ const HeyBluWireframe = () => {
                   <p className="text-sm text-gray-600">Point phone toward pitcher's mound</p>
                 </div>
               </div>
+              <div className="flex items-start">
+                <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold mr-4 flex-shrink-0">4</div>
+                <div>
+                  <p className="font-semibold text-gray-800 mb-1">Rotate Phone</p>
+                  <p className="text-sm text-gray-600">Turn your phone sideways for better scanning</p>
+                </div>
+              </div>
             </div>
           </div>
           <button 
-            onClick={() => setCurrentScreen(5)}
+            onClick={() => {setCurrentScreen(5); setIsLandscapeMode(true);}}
             className="w-full bg-blue-600 text-white py-4 rounded-lg font-semibold mt-6 hover:bg-blue-700 transition"
           >
             Next
@@ -248,7 +256,7 @@ const HeyBluWireframe = () => {
             Continue to Strike Zone Placement
           </button>
           <button 
-            onClick={() => setCurrentScreen(4)}
+            onClick={() => {setCurrentScreen(4); setIsLandscapeMode(false);}}
             className="w-full bg-gray-300 text-gray-700 py-3 rounded-lg font-semibold mt-3"
           >
             Back
@@ -332,7 +340,7 @@ const HeyBluWireframe = () => {
             </div>
           </div>
           <button 
-            onClick={() => {setIsPlaying(false); setCurrentScreen(8);}}
+            onClick={() => {setIsPlaying(false); setCurrentScreen(8); setIsLandscapeMode(false);}}
             className="w-full bg-red-600 text-white py-5 rounded-lg font-bold text-lg hover:bg-red-700 transition flex items-center justify-center"
           >
             <Square className="mr-2" size={24} fill="white" />
@@ -384,10 +392,10 @@ const HeyBluWireframe = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-200 p-8 flex items-center justify-center">
-      <div className="w-full max-w-md">
+      <div className={`w-full max-w-md transition-transform duration-500 ${isLandscapeMode ? 'rotate-90' : ''}`}>
         {/* iPhone Frame */}
         <div className="bg-black rounded-[3rem] p-3 shadow-2xl">
-          <div className="bg-white rounded-[2.5rem] overflow-hidden" style={{aspectRatio: '9/19.5'}}>
+          <div className="bg-white rounded-[2.5rem] overflow-hidden" style={{aspectRatio: isLandscapeMode ? '19.5/9' : '9/19.5'}}>
             {/* Status Bar */}
             <div className="bg-gradient-to-r from-blue-700 to-blue-500 px-6 py-3 flex justify-between items-center text-white text-xs">
               <span>9:41</span>
