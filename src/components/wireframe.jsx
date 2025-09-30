@@ -268,10 +268,10 @@ const HeyBluWireframe = () => {
     {
       title: "Ready to Play",
       content: (
-        <div className={`flex h-full px-8 ${isLandscapeMode ? 'flex-row items-center' : 'flex-col'}`}>
-          <div className={`text-center ${isLandscapeMode ? 'flex-1 mr-6' : 'mb-8'}`}>
-            <div className={`${isLandscapeMode ? 'text-3xl mb-2' : 'text-5xl mb-4'}`}>✅</div>
-            <h2 className={`${isLandscapeMode ? 'text-lg' : 'text-xl'} font-bold text-gray-800 mb-2`}>Setup Complete!</h2>
+        <div className={`flex h-full ${isLandscapeMode ? 'flex-row items-center px-4' : 'flex-col px-8'}`}>
+          <div className={`text-center ${isLandscapeMode ? 'flex-1 mr-4' : 'mb-8'}`}>
+            <div className={`${isLandscapeMode ? 'text-2xl mb-1' : 'text-5xl mb-4'}`}>✅</div>
+            <h2 className={`${isLandscapeMode ? 'text-sm' : 'text-xl'} font-bold text-gray-800 mb-1`}>Setup Complete!</h2>
             <p className={`text-gray-600 ${isLandscapeMode ? 'text-xs' : 'text-sm'}`}>Place phone in tripod and press Play</p>
             {!isLandscapeMode && (
               <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-3 mt-3">
@@ -280,39 +280,39 @@ const HeyBluWireframe = () => {
               </div>
             )}
           </div>
-          <div className={`${isLandscapeMode ? 'flex-1' : 'flex-grow'} bg-green-50 rounded-lg p-6 border-2 border-green-200 ${isLandscapeMode ? 'mb-0' : 'mb-6'}`}>
-            <div className={`${isLandscapeMode ? 'space-y-2' : 'space-y-4'}`}>
-              <div className="flex items-center justify-between py-3 border-b border-green-200">
-                <span className={`text-gray-700 font-medium ${isLandscapeMode ? 'text-sm' : ''}`}>Field Size:</span>
-                <span className={`text-gray-900 font-semibold ${isLandscapeMode ? 'text-sm' : ''}`}>{fieldSize || '12U'}</span>
+          <div className={`${isLandscapeMode ? 'flex-1' : 'flex-grow'} bg-green-50 rounded-lg border-2 border-green-200 ${isLandscapeMode ? 'p-3 mb-0' : 'p-6 mb-6'}`}>
+            <div className={`${isLandscapeMode ? 'space-y-1' : 'space-y-4'}`}>
+              <div className={`flex items-center justify-between ${isLandscapeMode ? 'py-1' : 'py-3'} border-b border-green-200`}>
+                <span className={`text-gray-700 font-medium ${isLandscapeMode ? 'text-xs' : ''}`}>Field Size:</span>
+                <span className={`text-gray-900 font-semibold ${isLandscapeMode ? 'text-xs' : ''}`}>{fieldSize || '12U'}</span>
               </div>
-              <div className="flex items-center justify-between py-3 border-b border-green-200">
-                <span className={`text-gray-700 font-medium ${isLandscapeMode ? 'text-sm' : ''}`}>Strike Zone:</span>
-                <span className={`text-gray-900 font-semibold ${isLandscapeMode ? 'text-sm' : ''}`}>{strikeZone || 'Pro'}</span>
+              <div className={`flex items-center justify-between ${isLandscapeMode ? 'py-1' : 'py-3'} border-b border-green-200`}>
+                <span className={`text-gray-700 font-medium ${isLandscapeMode ? 'text-xs' : ''}`}>Strike Zone:</span>
+                <span className={`text-gray-900 font-semibold ${isLandscapeMode ? 'text-xs' : ''}`}>{strikeZone || 'Pro'}</span>
               </div>
-              <div className="flex items-center justify-between py-3">
-                <span className={`text-gray-700 font-medium ${isLandscapeMode ? 'text-sm' : ''}`}>Audio Output:</span>
-                <span className={`text-gray-900 font-semibold ${isLandscapeMode ? 'text-sm' : ''}`}>{sound || 'Speaker'}</span>
+              <div className={`flex items-center justify-between ${isLandscapeMode ? 'py-1' : 'py-3'}`}>
+                <span className={`text-gray-700 font-medium ${isLandscapeMode ? 'text-xs' : ''}`}>Audio Output:</span>
+                <span className={`text-gray-900 font-semibold ${isLandscapeMode ? 'text-xs' : ''}`}>{sound || 'Speaker'}</span>
               </div>
             </div>
           </div>
           {isLandscapeMode && (
-            <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-2 mb-4">
+            <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-1 mb-2">
               <p className="text-blue-800 font-semibold text-xs">📱 Keep in Landscape Mode</p>
               <p className="text-blue-700 text-xs">Phone must stay sideways during gameplay for AR tracking</p>
             </div>
           )}
-          <div className={`${isLandscapeMode ? 'flex flex-col space-y-2' : ''}`}>
+          <div className={`${isLandscapeMode ? 'flex flex-col space-y-1' : ''}`}>
             <button 
               onClick={() => {setIsPlaying(true); setCurrentScreen(7);}}
-              className={`w-full bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transition flex items-center justify-center ${isLandscapeMode ? 'py-3 text-sm' : 'py-5 text-lg'}`}
+              className={`w-full bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transition flex items-center justify-center ${isLandscapeMode ? 'py-2 text-xs' : 'py-5 text-lg'}`}
             >
-              <Play className="mr-2" size={isLandscapeMode ? 16 : 24} fill="white" />
+              <Play className="mr-1" size={isLandscapeMode ? 12 : 24} fill="white" />
               Play Ball!
             </button>
             <button 
               onClick={() => setCurrentScreen(5)}
-              className={`w-full bg-gray-300 text-gray-700 rounded-lg font-semibold ${isLandscapeMode ? 'py-2 text-sm' : 'py-3 mt-3'}`}
+              className={`w-full bg-gray-300 text-gray-700 rounded-lg font-semibold ${isLandscapeMode ? 'py-1 text-xs' : 'py-3 mt-3'}`}
             >
               Re-scan Field
             </button>
@@ -415,10 +415,10 @@ const HeyBluWireframe = () => {
     <div className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-200 p-8 flex items-center justify-center">
       <div className={`w-full transition-all duration-500 ${isLandscapeMode ? 'max-w-4xl' : 'max-w-md'}`}>
         {/* iPhone Frame */}
-        <div className={`bg-black shadow-2xl transition-all duration-500 ${isLandscapeMode ? 'rounded-[2rem] p-2' : 'rounded-[3rem] p-3'}`} style={{aspectRatio: isLandscapeMode ? '19.5/9' : '9/19.5'}}>
-          <div className={`bg-white overflow-hidden transition-all duration-500 ${isLandscapeMode ? 'rounded-[1.5rem]' : 'rounded-[2.5rem]'}`} style={{aspectRatio: isLandscapeMode ? '19.5/9' : '9/19.5'}}>
+        <div className={`bg-black shadow-2xl transition-all duration-500 ${isLandscapeMode ? 'rounded-[1.5rem] p-1' : 'rounded-[3rem] p-3'}`} style={{aspectRatio: isLandscapeMode ? '19.5/9' : '9/19.5'}}>
+          <div className={`bg-white overflow-hidden transition-all duration-500 ${isLandscapeMode ? 'rounded-[1rem]' : 'rounded-[2.5rem]'}`} style={{aspectRatio: isLandscapeMode ? '19.5/9' : '9/19.5'}}>
             {/* Status Bar */}
-            <div className="bg-gradient-to-r from-blue-700 to-blue-500 px-6 py-3 flex justify-between items-center text-white text-xs">
+            <div className={`bg-gradient-to-r from-blue-700 to-blue-500 px-6 flex justify-between items-center text-white text-xs ${isLandscapeMode ? 'py-1' : 'py-3'}`}>
               <span>9:41</span>
               <div className="flex items-center gap-1">
                 <div className="w-4 h-3 border border-white rounded-sm"></div>
@@ -428,15 +428,15 @@ const HeyBluWireframe = () => {
             </div>
             
             {/* App Header */}
-            <div className="bg-gradient-to-r from-blue-700 to-blue-500 px-6 py-4 text-center">
-              <h1 className="text-3xl font-bold text-white" style={{fontFamily: 'cursive'}}>
+            <div className={`bg-gradient-to-r from-blue-700 to-blue-500 px-6 text-center ${isLandscapeMode ? 'py-1' : 'py-4'}`}>
+              <h1 className={`font-bold text-white ${isLandscapeMode ? 'text-lg' : 'text-3xl'}`} style={{fontFamily: 'cursive'}}>
                 Hey Blu
               </h1>
-              <p className="text-white text-xs opacity-90">Digital Umpire Assistant</p>
+              {!isLandscapeMode && <p className="text-white text-xs opacity-90">Digital Umpire Assistant</p>}
             </div>
 
             {/* Screen Content */}
-            <div className="bg-white" style={{height: 'calc(100% - 116px)'}}>
+            <div className="bg-white" style={{height: isLandscapeMode ? 'calc(100% - 60px)' : 'calc(100% - 116px)'}}>
               {screens[currentScreen].content}
             </div>
           </div>
