@@ -268,45 +268,55 @@ const HeyBluWireframe = () => {
     {
       title: "Ready to Play",
       content: (
-        <div className="flex flex-col h-full px-8">
-          <div className="text-center mb-8">
-            <div className="text-5xl mb-4">✅</div>
-            <h2 className="text-xl font-bold text-gray-800 mb-2">Setup Complete!</h2>
-            <p className="text-gray-600 text-sm">Place phone in tripod and press Play</p>
-            <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-3 mt-3">
-              <p className="text-blue-800 font-semibold text-sm">📱 Keep in Landscape Mode</p>
-              <p className="text-blue-700 text-xs mt-1">Phone must stay sideways during gameplay for AR tracking</p>
-            </div>
+        <div className={`flex h-full px-8 ${isLandscapeMode ? 'flex-row items-center' : 'flex-col'}`}>
+          <div className={`text-center ${isLandscapeMode ? 'flex-1 mr-6' : 'mb-8'}`}>
+            <div className={`${isLandscapeMode ? 'text-3xl mb-2' : 'text-5xl mb-4'}`}>✅</div>
+            <h2 className={`${isLandscapeMode ? 'text-lg' : 'text-xl'} font-bold text-gray-800 mb-2`}>Setup Complete!</h2>
+            <p className={`text-gray-600 ${isLandscapeMode ? 'text-xs' : 'text-sm'}`}>Place phone in tripod and press Play</p>
+            {!isLandscapeMode && (
+              <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-3 mt-3">
+                <p className="text-blue-800 font-semibold text-sm">📱 Keep in Landscape Mode</p>
+                <p className="text-blue-700 text-xs mt-1">Phone must stay sideways during gameplay for AR tracking</p>
+              </div>
+            )}
           </div>
-          <div className="flex-grow bg-green-50 rounded-lg p-6 border-2 border-green-200 mb-6">
-            <div className="space-y-4">
+          <div className={`${isLandscapeMode ? 'flex-1' : 'flex-grow'} bg-green-50 rounded-lg p-6 border-2 border-green-200 ${isLandscapeMode ? 'mb-0' : 'mb-6'}`}>
+            <div className={`${isLandscapeMode ? 'space-y-2' : 'space-y-4'}`}>
               <div className="flex items-center justify-between py-3 border-b border-green-200">
-                <span className="text-gray-700 font-medium">Field Size:</span>
-                <span className="text-gray-900 font-semibold">{fieldSize || '12U'}</span>
+                <span className={`text-gray-700 font-medium ${isLandscapeMode ? 'text-sm' : ''}`}>Field Size:</span>
+                <span className={`text-gray-900 font-semibold ${isLandscapeMode ? 'text-sm' : ''}`}>{fieldSize || '12U'}</span>
               </div>
               <div className="flex items-center justify-between py-3 border-b border-green-200">
-                <span className="text-gray-700 font-medium">Strike Zone:</span>
-                <span className="text-gray-900 font-semibold">{strikeZone || 'Pro'}</span>
+                <span className={`text-gray-700 font-medium ${isLandscapeMode ? 'text-sm' : ''}`}>Strike Zone:</span>
+                <span className={`text-gray-900 font-semibold ${isLandscapeMode ? 'text-sm' : ''}`}>{strikeZone || 'Pro'}</span>
               </div>
               <div className="flex items-center justify-between py-3">
-                <span className="text-gray-700 font-medium">Audio Output:</span>
-                <span className="text-gray-900 font-semibold">{sound || 'Speaker'}</span>
+                <span className={`text-gray-700 font-medium ${isLandscapeMode ? 'text-sm' : ''}`}>Audio Output:</span>
+                <span className={`text-gray-900 font-semibold ${isLandscapeMode ? 'text-sm' : ''}`}>{sound || 'Speaker'}</span>
               </div>
             </div>
           </div>
-          <button 
-            onClick={() => {setIsPlaying(true); setCurrentScreen(7);}}
-            className="w-full bg-blue-600 text-white py-5 rounded-lg font-bold text-lg hover:bg-blue-700 transition flex items-center justify-center"
-          >
-            <Play className="mr-2" size={24} fill="white" />
-            Play Ball!
-          </button>
-          <button 
-            onClick={() => setCurrentScreen(5)}
-            className="w-full bg-gray-300 text-gray-700 py-3 rounded-lg font-semibold mt-3"
-          >
-            Re-scan Field
-          </button>
+          {isLandscapeMode && (
+            <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-2 mb-4">
+              <p className="text-blue-800 font-semibold text-xs">📱 Keep in Landscape Mode</p>
+              <p className="text-blue-700 text-xs">Phone must stay sideways during gameplay for AR tracking</p>
+            </div>
+          )}
+          <div className={`${isLandscapeMode ? 'flex flex-col space-y-2' : ''}`}>
+            <button 
+              onClick={() => {setIsPlaying(true); setCurrentScreen(7);}}
+              className={`w-full bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transition flex items-center justify-center ${isLandscapeMode ? 'py-3 text-sm' : 'py-5 text-lg'}`}
+            >
+              <Play className="mr-2" size={isLandscapeMode ? 16 : 24} fill="white" />
+              Play Ball!
+            </button>
+            <button 
+              onClick={() => setCurrentScreen(5)}
+              className={`w-full bg-gray-300 text-gray-700 rounded-lg font-semibold ${isLandscapeMode ? 'py-2 text-sm' : 'py-3 mt-3'}`}
+            >
+              Re-scan Field
+            </button>
+          </div>
         </div>
       )
     },
@@ -314,38 +324,47 @@ const HeyBluWireframe = () => {
     {
       title: "Game Active",
       content: (
-        <div className="flex flex-col h-full px-8">
-          <div className="text-center mb-6">
-            <div className="text-5xl mb-4 animate-pulse">⚾</div>
-            <h2 className="text-2xl font-bold text-blue-600 mb-2">GAME ACTIVE</h2>
-            <p className="text-gray-600 text-sm">Tracking pitches in real-time</p>
-            <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-2 mt-3">
-              <p className="text-blue-800 font-semibold text-xs">📱 Landscape Mode Required</p>
-            </div>
+        <div className={`flex h-full px-8 ${isLandscapeMode ? 'flex-row items-center' : 'flex-col'}`}>
+          <div className={`text-center ${isLandscapeMode ? 'flex-1 mr-6' : 'mb-6'}`}>
+            <div className={`${isLandscapeMode ? 'text-3xl mb-2' : 'text-5xl mb-4'} animate-pulse`}>⚾</div>
+            <h2 className={`${isLandscapeMode ? 'text-lg' : 'text-2xl'} font-bold text-blue-600 mb-2`}>GAME ACTIVE</h2>
+            <p className={`text-gray-600 ${isLandscapeMode ? 'text-xs' : 'text-sm'}`}>Tracking pitches in real-time</p>
+            {!isLandscapeMode && (
+              <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-2 mt-3">
+                <p className="text-blue-800 font-semibold text-xs">📱 Landscape Mode Required</p>
+              </div>
+            )}
           </div>
-          <div className="flex-grow bg-gray-100 rounded-lg p-6 mb-6">
+          <div className={`${isLandscapeMode ? 'flex-1' : 'flex-grow'} bg-gray-100 rounded-lg p-6 ${isLandscapeMode ? 'mb-0' : 'mb-6'}`}>
             <div className="bg-white rounded-lg p-4 mb-4 shadow">
               <div className="flex justify-between items-center mb-2">
-                <span className="text-gray-600 text-sm">Balls</span>
-                <span className="text-2xl font-bold text-gray-900">2</span>
+                <span className={`text-gray-600 ${isLandscapeMode ? 'text-xs' : 'text-sm'}`}>Balls</span>
+                <span className={`${isLandscapeMode ? 'text-xl' : 'text-2xl'} font-bold text-gray-900`}>2</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-gray-600 text-sm">Strikes</span>
-                <span className="text-2xl font-bold text-gray-900">1</span>
+                <span className={`text-gray-600 ${isLandscapeMode ? 'text-xs' : 'text-sm'}`}>Strikes</span>
+                <span className={`${isLandscapeMode ? 'text-xl' : 'text-2xl'} font-bold text-gray-900`}>1</span>
               </div>
             </div>
             <div className="bg-green-100 border-2 border-green-400 rounded-lg p-4 text-center">
-              <p className="text-green-800 font-bold text-lg">Last Call: BALL</p>
-              <p className="text-green-700 text-sm mt-1">Outside - 2 inches</p>
+              <p className={`text-green-800 font-bold ${isLandscapeMode ? 'text-sm' : 'text-lg'}`}>Last Call: BALL</p>
+              <p className={`text-green-700 ${isLandscapeMode ? 'text-xs' : 'text-sm'} mt-1`}>Outside - 2 inches</p>
             </div>
           </div>
-          <button 
-            onClick={() => {setIsPlaying(false); setCurrentScreen(8); setIsLandscapeMode(false);}}
-            className="w-full bg-red-600 text-white py-5 rounded-lg font-bold text-lg hover:bg-red-700 transition flex items-center justify-center"
-          >
-            <Square className="mr-2" size={24} fill="white" />
-            Stop Game
-          </button>
+          {isLandscapeMode && (
+            <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-2 mb-4">
+              <p className="text-blue-800 font-semibold text-xs">📱 Landscape Mode Required</p>
+            </div>
+          )}
+          <div className={`${isLandscapeMode ? 'flex flex-col space-y-2' : ''}`}>
+            <button 
+              onClick={() => {setIsPlaying(false); setCurrentScreen(8); setIsLandscapeMode(false);}}
+              className={`w-full bg-red-600 text-white rounded-lg font-bold hover:bg-red-700 transition flex items-center justify-center ${isLandscapeMode ? 'py-3 text-sm' : 'py-5 text-lg'}`}
+            >
+              <Square className="mr-2" size={isLandscapeMode ? 16 : 24} fill="white" />
+              Stop Game
+            </button>
+          </div>
         </div>
       )
     },
@@ -353,38 +372,40 @@ const HeyBluWireframe = () => {
     {
       title: "Save Session",
       content: (
-        <div className="flex flex-col h-full px-8">
-          <div className="text-center mb-8">
-            <Save className="mx-auto mb-4 text-blue-600" size={48} />
-            <h2 className="text-xl font-bold text-gray-800 mb-2">Save This Session?</h2>
-            <p className="text-gray-600 text-sm">Save field setup for quick reload</p>
+        <div className={`flex h-full px-8 ${isLandscapeMode ? 'flex-row items-center' : 'flex-col'}`}>
+          <div className={`text-center ${isLandscapeMode ? 'flex-1 mr-6' : 'mb-8'}`}>
+            <Save className={`mx-auto ${isLandscapeMode ? 'mb-2' : 'mb-4'} text-blue-600`} size={isLandscapeMode ? 32 : 48} />
+            <h2 className={`${isLandscapeMode ? 'text-lg' : 'text-xl'} font-bold text-gray-800 mb-2`}>Save This Session?</h2>
+            <p className={`text-gray-600 ${isLandscapeMode ? 'text-xs' : 'text-sm'}`}>Save field setup for quick reload</p>
           </div>
-          <div className="flex-grow">
+          <div className={`${isLandscapeMode ? 'flex-1' : 'flex-grow'}`}>
             <input 
               type="text"
               placeholder="Field Name (optional)"
-              className="w-full px-4 py-4 border-2 border-gray-300 rounded-lg mb-4 text-gray-900"
+              className={`w-full px-4 border-2 border-gray-300 rounded-lg mb-4 text-gray-900 ${isLandscapeMode ? 'py-2 text-sm' : 'py-4'}`}
             />
-            <div className="bg-blue-50 rounded-lg p-4 border-2 border-blue-200 mb-6">
-              <p className="text-sm text-gray-700 mb-2"><strong>Session Summary:</strong></p>
-              <p className="text-sm text-gray-600">Duration: 1h 23m</p>
-              <p className="text-sm text-gray-600">Total Pitches: 147</p>
-              <p className="text-sm text-gray-600">Strikes: 89 (60.5%)</p>
-              <p className="text-sm text-gray-600">Balls: 58 (39.5%)</p>
+            <div className={`bg-blue-50 rounded-lg p-4 border-2 border-blue-200 ${isLandscapeMode ? 'mb-4' : 'mb-6'}`}>
+              <p className={`text-gray-700 mb-2 ${isLandscapeMode ? 'text-xs' : 'text-sm'}`}><strong>Session Summary:</strong></p>
+              <p className={`text-gray-600 ${isLandscapeMode ? 'text-xs' : 'text-sm'}`}>Duration: 1h 23m</p>
+              <p className={`text-gray-600 ${isLandscapeMode ? 'text-xs' : 'text-sm'}`}>Total Pitches: 147</p>
+              <p className={`text-gray-600 ${isLandscapeMode ? 'text-xs' : 'text-sm'}`}>Strikes: 89 (60.5%)</p>
+              <p className={`text-gray-600 ${isLandscapeMode ? 'text-xs' : 'text-sm'}`}>Balls: 58 (39.5%)</p>
             </div>
           </div>
-          <button 
-            onClick={() => setCurrentScreen(0)}
-            className="w-full bg-blue-600 text-white py-4 rounded-lg font-semibold mb-3 hover:bg-blue-700 transition"
-          >
-            Save Session
-          </button>
-          <button 
-            onClick={() => setCurrentScreen(0)}
-            className="w-full bg-gray-300 text-gray-700 py-3 rounded-lg font-semibold"
-          >
-            Don't Save
-          </button>
+          <div className={`${isLandscapeMode ? 'flex flex-col space-y-2' : ''}`}>
+            <button 
+              onClick={() => setCurrentScreen(0)}
+              className={`w-full bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition ${isLandscapeMode ? 'py-2 text-sm mb-2' : 'py-4 mb-3'}`}
+            >
+              Save Session
+            </button>
+            <button 
+              onClick={() => setCurrentScreen(0)}
+              className={`w-full bg-gray-300 text-gray-700 rounded-lg font-semibold ${isLandscapeMode ? 'py-2 text-sm' : 'py-3'}`}
+            >
+              Don't Save
+            </button>
+          </div>
         </div>
       )
     }
@@ -430,4 +451,6 @@ const HeyBluWireframe = () => {
   );
 };
 
+export default HeyBluWireframe;
+export default HeyBluWireframe;
 export default HeyBluWireframe;
