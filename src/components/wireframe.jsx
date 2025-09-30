@@ -225,11 +225,13 @@ const HeyBluWireframe = () => {
       content: (
         <div className="flex flex-col h-full px-8">
           <div className="text-center mb-6">
-            <h2 className="text-xl font-bold text-gray-800 mb-2">Scan Field</h2>
-            <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-3 mt-3">
-              <p className="text-blue-800 font-semibold text-sm">📱 Rotate to Landscape</p>
-              <p className="text-blue-700 text-xs mt-1">Hold your phone sideways for better scanning</p>
-            </div>
+            <p className="text-gray-800 text-lg mb-4">Hold phone sideways. Then tap to Scan the home plate area.</p>
+            <button 
+              onClick={() => setCurrentScreen(6)}
+              className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
+            >
+              Scan
+            </button>
           </div>
           <div className="flex-grow bg-gray-900 rounded-lg relative overflow-hidden border-4 border-gray-700">
             {/* Simulated AR View */}
@@ -248,12 +250,6 @@ const HeyBluWireframe = () => {
             </div>
           </div>
           <button 
-            onClick={() => setCurrentScreen(6)}
-            className="w-full bg-blue-600 text-white py-4 rounded-lg font-semibold mt-6 hover:bg-blue-700 transition"
-          >
-            Continue to Strike Zone Placement
-          </button>
-          <button 
             onClick={() => {setCurrentScreen(4); setIsLandscapeMode(false);}}
             className="w-full bg-gray-300 text-gray-700 py-3 rounded-lg font-semibold mt-3"
           >
@@ -262,38 +258,73 @@ const HeyBluWireframe = () => {
         </div>
       )
     },
-    // Screen 6: Place in Tripod
+    // Screen 6: Strike Zone Placement
     {
-      title: "Ready to Play",
+      title: "Strike Zone Placement",
       content: (
-        <div className={`flex h-full ${isLandscapeMode ? 'flex-row items-center px-4' : 'flex-col px-8'}`}>
-          <div className={`text-center ${isLandscapeMode ? 'flex-1 mr-4' : 'mb-8'}`}>
-            <div className={`${isLandscapeMode ? 'text-2xl mb-1' : 'text-5xl mb-4'}`}>✅</div>
-            <h2 className={`${isLandscapeMode ? 'text-sm' : 'text-xl'} font-bold text-gray-800 mb-1`}>Setup Complete!</h2>
-            <p className={`text-gray-600 ${isLandscapeMode ? 'text-xs' : 'text-sm'}`}>Place phone in tripod in landscape mode, and press Play</p>
-            <div className={`text-gray-500 ${isLandscapeMode ? 'text-xs mt-1' : 'text-sm mt-2'}`}>
-              Field: {fieldSize || '12U'} • Zone: {strikeZone || 'Pro'} • Audio: {sound || 'Speaker'}
+        <div className="flex flex-col h-full px-8">
+          <div className="flex-grow bg-gray-900 rounded-lg relative overflow-hidden border-4 border-gray-700">
+            {/* Simulated ARKit View */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="text-white text-center p-6">
+                <div className="mb-6 text-6xl">🎯</div>
+                <div className="bg-black bg-opacity-70 rounded-lg p-4 mb-4">
+                  <p className="font-semibold mb-2">Step 2 of 2</p>
+                  <p className="text-sm">Scan completed! Now place the strike zone</p>
+                  <p className="text-sm mt-2 text-yellow-300">Tap to position the strike zone</p>
+                </div>
+                <div className="w-full bg-gray-700 rounded-full h-2">
+                  <div className="bg-green-600 h-2 rounded-full" style={{width: '100%'}}></div>
+                </div>
+              </div>
             </div>
           </div>
-          <div className={`${isLandscapeMode ? 'flex flex-col space-y-1' : ''}`}>
-            <button 
-              onClick={() => {setIsPlaying(true); setCurrentScreen(7);}}
-              className={`w-full bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transition flex items-center justify-center ${isLandscapeMode ? 'py-2 text-xs' : 'py-5 text-lg'}`}
-            >
-              <Play className="mr-1" size={isLandscapeMode ? 12 : 24} fill="white" />
-              Play Ball!
-            </button>
-            <button 
-              onClick={() => setCurrentScreen(5)}
-              className={`w-full bg-gray-300 text-gray-700 rounded-lg font-semibold ${isLandscapeMode ? 'py-1 text-xs' : 'py-3 mt-3'}`}
-            >
-              Re-scan Field
-            </button>
-          </div>
+          <button 
+            onClick={() => setCurrentScreen(7)}
+            className="w-full bg-blue-600 text-white py-4 rounded-lg font-semibold mt-6 hover:bg-blue-700 transition"
+          >
+            Continue
+          </button>
+          <button 
+            onClick={() => setCurrentScreen(5)}
+            className="w-full bg-gray-300 text-gray-700 py-3 rounded-lg font-semibold mt-3"
+          >
+            Back
+          </button>
         </div>
       )
     },
-    // Screen 7: Active Game
+    // Screen 7: Place in Tripod
+    {
+      title: "Ready to Play",
+      content: (
+        <div className="flex flex-col h-full px-8">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">Place phone in tripod in landscape mode, and press Play</h2>
+          </div>
+          <div className="flex-grow flex items-center justify-center">
+            <div className="text-center">
+              <div className="text-6xl mb-6">📱</div>
+              <p className="text-gray-600 text-lg">Phone ready for gameplay</p>
+            </div>
+          </div>
+          <button 
+            onClick={() => {setIsPlaying(true); setCurrentScreen(8);}}
+            className="w-full bg-blue-600 text-white py-5 rounded-lg font-bold text-lg hover:bg-blue-700 transition flex items-center justify-center mb-3"
+          >
+            <Play className="mr-2" size={24} fill="white" />
+            Play Ball!
+          </button>
+          <button 
+            onClick={() => setCurrentScreen(6)}
+            className="w-full bg-gray-300 text-gray-700 py-3 rounded-lg font-semibold"
+          >
+            Re-scan Field
+          </button>
+        </div>
+      )
+    },
+    // Screen 8: Game Active
     {
       title: "Game Active",
       content: (
@@ -302,11 +333,6 @@ const HeyBluWireframe = () => {
             <div className={`${isLandscapeMode ? 'text-3xl mb-2' : 'text-5xl mb-4'} animate-pulse`}>⚾</div>
             <h2 className={`${isLandscapeMode ? 'text-lg' : 'text-2xl'} font-bold text-blue-600 mb-2`}>GAME ACTIVE</h2>
             <p className={`text-gray-600 ${isLandscapeMode ? 'text-xs' : 'text-sm'}`}>Tracking pitches in real-time</p>
-            {!isLandscapeMode && (
-              <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-2 mt-3">
-                <p className="text-blue-800 font-semibold text-xs">📱 Landscape Mode Required</p>
-              </div>
-            )}
           </div>
           <div className={`${isLandscapeMode ? 'flex-1' : 'flex-grow'} bg-gray-100 rounded-lg p-6 ${isLandscapeMode ? 'mb-0' : 'mb-6'}`}>
             <div className="bg-white rounded-lg p-4 mb-4 shadow">
@@ -324,14 +350,9 @@ const HeyBluWireframe = () => {
               <p className={`text-green-700 ${isLandscapeMode ? 'text-xs' : 'text-sm'} mt-1`}>Outside - 2 inches</p>
             </div>
           </div>
-          {isLandscapeMode && (
-            <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-2 mb-4">
-              <p className="text-blue-800 font-semibold text-xs">📱 Landscape Mode Required</p>
-            </div>
-          )}
           <div className={`${isLandscapeMode ? 'flex flex-col space-y-2' : ''}`}>
             <button 
-              onClick={() => {setIsPlaying(false); setCurrentScreen(8); setIsLandscapeMode(false);}}
+              onClick={() => {setIsPlaying(false); setCurrentScreen(9); setIsLandscapeMode(false);}}
               className={`w-full bg-red-600 text-white rounded-lg font-bold hover:bg-red-700 transition flex items-center justify-center ${isLandscapeMode ? 'py-3 text-sm' : 'py-5 text-lg'}`}
             >
               <Square className="mr-2" size={isLandscapeMode ? 16 : 24} fill="white" />
@@ -341,7 +362,7 @@ const HeyBluWireframe = () => {
         </div>
       )
     },
-    // Screen 8: Save Session
+    // Screen 9: Save Session
     {
       title: "Save Session",
       content: (
